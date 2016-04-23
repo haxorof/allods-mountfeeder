@@ -16,7 +16,7 @@ end
 
 function DisplayFoodShortageMessage()
 	local stableInfo = mount.GetStableInfo()
-	if stableInfo and stableInfo.foodCount < 200 then
+	if stableInfo and stableInfo.foodCount < 3 then
 		wtMainPanel:Show(true)
 	end
 end
