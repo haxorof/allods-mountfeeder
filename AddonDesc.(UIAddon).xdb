@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<UIAddon>
+	<Name>MountFeeder</Name>
+	<AutoStart>true</AutoStart>
+	<ScriptFileRefs>
+		<Item href="Scripts/Helper.lua" />
+		<Item href="Scripts/Main.lua" />
+	</ScriptFileRefs>
+	<MainFormId>Main</MainFormId>
+	<Forms>
+		<Item>
+			<Id>Main</Id>
+			<Form href="Widgets/MainForm.(WidgetForm).xdb#xpointer(/WidgetForm)" />
+		</Item>
+	</Forms>
+	<visObjects href="" />
+	<texts href="" />
+	<textures href="" />
+</UIAddon>
