@@ -13,7 +13,6 @@
 			<Form href="Widgets/MainForm.(WidgetForm).xdb#xpointer(/WidgetForm)" />
 		</Item>
 	</Forms>
-	<visObjects href="" />
-	<texts href="" />
-	<textures href="" />
+	<Author>haxorof</Author>
+  	<Revision>1.0</Revision>
 </UIAddon>
