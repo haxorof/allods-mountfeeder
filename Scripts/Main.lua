@@ -12,20 +12,28 @@ Global("WIDGET_FADE_IN", 2)
 Global("WIDGET_FADE_SOLID", 3)
 Global("WIDGET_FADE_OUT", 4)
 
--- LOCALE CONSTANTS
-Global("TXT_NOTIFICATION_MSG", 1)
-
 -- WIDGETS
 Global("wtNotificationMsg", nil)
 
 -- OTHER
 Global("fadeStatus", WIDGET_FADE_TRANSPARENT)
-Global("locale", nil)
-Global("localeTexts", nil)
 
 --------------------------------------------------------------------------------
 -- REACTION HANDLERS
 --------------------------------------------------------------------------------
+function DisplayNotificationMessage()
+	local stableInfo = mount.GetStableInfo()
+	if stableInfo and stableInfo.foodCount < 3 then
+		local vt=common.CreateValuedText()
+		vt:SetFormat(userMods.ToWString([[<html><header color="0xFFF8ED69" alignx="center" fontsize="28" shadow="1"><r name="message"/></header></html>]]))
+		vt:SetVal("message", GetTextLocalized(TXT_NOTIFICATION_MSG))
+		wtNotificationMsg:SetValuedText(vt)
+		wtNotificationMsg:Show(true)
+		wtNotificationMsg:PlayFadeEffect(0.0, 1.0, MESSAGE_FADE_IN_TIME, EA_MONOTONOUS_INCREASE)
+		fadeStatus = WIDGET_FADE_IN
+	end
+end
+
 function IsMountHungry(mountInfo)
 	local isHungry = false
 	if mountInfo.canBeFeeded and mountInfo.satiationMs == 0 then
@@ -34,39 +42,12 @@ function IsMountHungry(mountInfo)
 	return isHungry
 end
 
-function DisplayNotificationMessage()
-    local msg = localeTexts[TXT_NOTIFICATION_MSG][locale]
-	if common.IsEmptyWString(msg) then
-	    -- Default to English
-		msg = localeTexts[TXT_NOTIFICATION_MSG]["eng_eu"]
-	end
-	local vt=common.CreateValuedText()
-	vt:SetFormat(userMods.ToWString([[<html><header color="0xFFF8ED69" alignx="center" fontsize="28" shadow="1">]]..msg.."</header></html>"))
-	wtNotificationMsg:SetValuedText(vt)	
-	mainForm:Show(true)
-	wtNotificationMsg:Show(true)
-	local visible = wtNotificationMsg:IsVisible()
-	wtNotificationMsg:PlayFadeEffect(0.0, 1.0, MESSAGE_FADE_IN_TIME, EA_MONOTONOUS_INCREASE)
-	fadeStatus = WIDGET_FADE_IN
-end
-
-function DisplayFoodShortageNotification()
-	local stableInfo = mount.GetStableInfo()
-	if stableInfo and stableInfo.foodCount < 3 then
-		DisplayNotificationMessage()
-	end
-end
-
-function FeedMountIfHungry(mountInfo)
-	if IsMountHungry(mountInfo) then
-		mount.Feed(mountInfo.id)
-		DisplayFoodShortageNotification()
-	end
-end
-
 function DoFeedMount(mountId, caller)
 	local mountInfo = mount.GetInfo(mountId)
-	FeedMountIfHungry(mountInfo)
+	if IsMountHungry(mountInfo) then
+		mount.Feed(mountInfo.id)
+		DisplayNotificationMessage()
+	end
 end
 
 -- EVENT_STABLE_MOUNT_HUNGRY
@@ -101,16 +82,6 @@ end
 --------------------------------------------------------------------------------
 -- INITIALIZATION
 --------------------------------------------------------------------------------
-function InitLocalization()
-	locale = common.GetLocalization()
-	localeTexts = {
-		[TXT_NOTIFICATION_MSG] = {
-			["eng_eu"] = "Your mount is soon out of food, buy or do the quest to get some more!",
-			["rus"] = "Еда для ездового животного скоро закончится, купите еще или выполните специальный квест!",			
-		}
-	}
-end
-
 function InitEventHandlers()
 	common.RegisterEventHandler(OnEventMountHungry, "EVENT_STABLE_MOUNT_HUNGRY")
 	common.RegisterEventHandler(OnEventMountChanged, "EVENT_ACTIVE_MOUNT_CHANGED")

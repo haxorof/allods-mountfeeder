@@ -20,17 +20,13 @@
 			<Size>0</Size>
 		</Y>
 	</Placement>
+	<TextValues />
 	<Visible>true</Visible>
 	<Enabled>true</Enabled>
-	<TabOrder>0</TabOrder>
-	<TransparentInput>true</TransparentInput>
-	<FormatFileRef href="NotificationMsg.txt" />
 	<TextStyle>
-		<wrapText>false</wrapText>
-		<showClippedSymbol>true</showClippedSymbol>
-		<ellipsis>false</ellipsis>
+		<multiline>true</multiline>
 	</TextStyle>
+	<TransparentInput>true</TransparentInput>
 	<minWidth>100</minWidth>
 	<maxWidth>1200</maxWidth>
-	<isHtmlEscaped>true</isHtmlEscaped>
 </WidgetTextView>

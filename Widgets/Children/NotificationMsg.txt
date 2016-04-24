@@ -1,1 +1,0 @@
-<html><header color="0xFFF8ED69" alignx="center" fontsize="28" shadow="1"><rs class="class"><r name="msg"/></rs></header></html>

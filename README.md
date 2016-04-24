@@ -8,7 +8,7 @@ Allods Online add-on to automatically feed your mount and notifies you when you 
 
 ## Limitations
 
-* English only.
+* Supported languages: English, Russian
 
 ## Related information
 

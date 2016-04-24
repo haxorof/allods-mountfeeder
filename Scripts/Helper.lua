@@ -1,4 +1,14 @@
 --------------------------------------------------------------------------------
+-- GLOBALS
+--------------------------------------------------------------------------------
+
+-- CONSTANTS
+Global("TXT_NOTIFICATION_MSG", "Msg")
+
+-- Other
+Global("locale", nil)
+
+--------------------------------------------------------------------------------
 -- Helper functions
 --------------------------------------------------------------------------------
 function GetTableSize( t )
@@ -11,6 +21,20 @@ function GetTableSize( t )
 	end
 	return count
 end
+
+function InitLocalization()
+	locale = common.GetLocalization()
+end
+
+function GetTextLocalized(strTextName)
+	if locale == nil then
+	    -- Default to English
+		return common.GetAddonRelatedTextGroup("eng_eu"):GetText(strTextName)
+	else
+		return common.GetAddonRelatedTextGroup(locale):GetText(strTextName)
+	end
+end
+
 --------------------------------------------------------------------------------
 -- Logging helpers
 --------------------------------------------------------------------------------
