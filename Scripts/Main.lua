@@ -24,10 +24,7 @@ Global("fadeStatus", WIDGET_FADE_TRANSPARENT)
 function DisplayNotificationMessage()
 	local stableInfo = mount.GetStableInfo()
 	if stableInfo and stableInfo.foodCount < 3 then
-		local vt=common.CreateValuedText()
-		vt:SetFormat(userMods.ToWString([[<html><header color="0xFFF8ED69" alignx="center" fontsize="28" shadow="1"><r name="message"/></header></html>]]))
-		vt:SetVal("message", GetTextLocalized(TXT_NOTIFICATION_MSG))
-		wtNotificationMsg:SetValuedText(vt)
+		wtNotificationMsg:SetVal("message", GetTextLocalized(TXT_NOTIFICATION_MSG))
 		wtNotificationMsg:Show(true)
 		wtNotificationMsg:PlayFadeEffect(0.0, 1.0, MESSAGE_FADE_IN_TIME, EA_MONOTONOUS_INCREASE)
 		fadeStatus = WIDGET_FADE_IN

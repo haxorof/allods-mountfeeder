@@ -20,7 +20,7 @@
 			<Size>0</Size>
 		</Y>
 	</Placement>
-	<TextValues />
+	<FormatFileRef href="NotificationMsgFormat.txt" />
 	<Visible>true</Visible>
 	<Enabled>true</Enabled>
 	<TextStyle>
