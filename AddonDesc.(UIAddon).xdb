@@ -14,7 +14,7 @@
 		</Item>
 	</Forms>
 	<Author>haxorof</Author>
-	<Revision>1.0</Revision>
+	<Revision>1.0.0</Revision>
 	<textsGroups>
 		<Item>
 			<groupName>rus</groupName>
@@ -25,4 +25,9 @@
 			<texts href="Locales/eng/Locale.(UIRelatedTexts).xdb#xpointer(/UIRelatedTexts)"/>
 		</Item>
 	</textsGroups>
+	<addon_name>MountFeeder</addon_name>
+	<addon_date>1481308504</addon_date>
+	<addon_link>https://github.com/haxorof/allods-mountfeeder/</addon_link>
+	<localizedNameFileRef href="name.txt"/>
+	<localizedDescFileRef href="desc.txt"/>
 </UIAddon>
