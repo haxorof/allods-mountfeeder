@@ -18,7 +18,3 @@ Allods Online add-on to automatically feed your mount and notifies you when you 
 For more information about the game, visit official website:
 
 * [allods.my.com](http://allods.my.com/)
-
-## Issue tracker
-
-If you're looking for the issue tracker, visit [haxorof/allods-mountfeeder/issues](https://github.com/haxorof/allods-mountfeeder/issues).
