@@ -17,4 +17,4 @@ Allods Online add-on to automatically feed your mount and notifies you when you 
 
 For more information about the game, visit official website:
 
-* [allods.my.com](http://allods.my.com/)
+* [my.com](http://my.com/)
